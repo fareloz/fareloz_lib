@@ -18,5 +18,8 @@
     <ClInclude Include="random.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="number.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
