@@ -17,11 +17,13 @@ namespace fareloz
 				typedef VoidType type;
 			};
 
+            template<> struct numeric_type<unsigned char>      { typedef UIntType type; };
 			template<> struct numeric_type<unsigned short>      { typedef UIntType type; };
 			template<> struct numeric_type<unsigned int>        { typedef UIntType type; };
 			template<> struct numeric_type<unsigned long>       { typedef UIntType type; };
 			template<> struct numeric_type<unsigned long long>  { typedef UIntType type; };
 
+            template<> struct numeric_type<char>      { typedef IntType type; };
 			template<> struct numeric_type<short>      { typedef IntType type; };
 			template<> struct numeric_type<int>        { typedef IntType type; };
 			template<> struct numeric_type<long>       { typedef IntType type; };
