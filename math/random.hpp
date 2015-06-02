@@ -21,15 +21,15 @@ namespace fareloz
 		namespace random
 		{
 			template<typename T, typename PT = type::traits::numeric_type<T>::type>
-			struct random
+			struct generator
 			{
-				static T generate(T min, T max);
+				static T generate_value(T min, T max);
 			};
 
 			template<typename T>
-			struct random<T, type::traits::IntType>
+            struct generator<T, type::traits::IntType>
 			{
-				static T generate(T min, T max)
+                static T generate_value(T min, T max)
 				{
 					std::uniform_int_distribution<T> d{ min, max };
 					return d(default_engine());
@@ -37,9 +37,9 @@ namespace fareloz
 			};
 
 			template<typename T>
-			struct random<T, type::traits::RealType>
+            struct generator<T, type::traits::RealType>
 			{
-				static T generate(T min, T max)
+                static T generate_value(T min, T max)
 				{
 					std::uniform_real_distribution<T> d{ min, max };
 					return d(default_engine());
