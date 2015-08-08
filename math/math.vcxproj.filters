@@ -21,5 +21,8 @@
     <ClInclude Include="number.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="range.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
