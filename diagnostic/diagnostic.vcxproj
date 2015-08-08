@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="object_counter.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{E318C7F2-5C0B-4E08-9638-9CE41354028A}</ProjectGuid>
     <RootNamespace>fareloz</RootNamespace>
