@@ -10,6 +10,86 @@ namespace fareloz
         namespace collections
         {
             template<typename T>
+            class range_iterator 
+            {
+            public:
+                typedef T range_type;
+                typedef range_iterator<range_type> self_type;
+                typedef std::bidirectional_iterator_tag iterator_category;
+                typedef typename range_type::value_type value_type;
+                typedef typename range_type::size_type size_type;
+                typedef typename range_type::difference_type difference_type;
+                typedef typename range_type::pointer pointer;
+                typedef typename range_type::const_pointer const_pointer;
+                typedef typename range_type::reference reference;
+                typedef typename range_type::const_reference const_reference;
+
+                range_iterator(const range_type* const range, size_t start_index)
+                    : m_range(range), m_index(start_index)
+                { }
+
+                range_iterator(const self_type&) = default;
+                range_iterator(self_type&&) = default;
+                range_iterator& operator=(const range_iterator&) = default;
+                ~range_iterator() = default;
+
+                operator value_type() const { 
+                    return (*m_range)[m_index]; 
+                }
+
+                value_type operator*() const {
+                    return (*m_range)[m_index];;
+                }
+
+                self_type& operator++() {
+                    ++m_index;
+                    return *this;
+                }
+
+                self_type operator++(int) {
+                    self_type tmp(*this);
+                    ++(*this);
+                    return tmp;
+                }
+
+                self_type operator+(difference_type n) {
+                    self_type tmp(*this);
+                    tmp.m_index += n;
+                    return tmp;
+                }
+
+                self_type& operator+=(difference_type n) {
+                    m_index += n;
+                    return (*this);
+                }
+
+                self_type operator-(difference_type n) {
+                    self_type tmp(*this);
+                    tmp.m_index -= n;
+                    return tmp;
+                }
+
+                self_type& operator-=(difference_type n) {
+                    m_index -= n;
+                    return (*this);
+                }
+
+                bool operator==(const self_type& other) const {
+                    return ((m_range == other.m_range) &&
+                        (m_index == other.m_index));
+                }
+
+                bool operator!=(const self_type& other) const {
+                    return !((m_range == other.m_range) &&
+                        (m_index == other.m_index));
+                }
+
+            private:
+                const range_type* const m_range;
+                size_type m_index;
+            };
+
+            template<typename T>
             class range sealed
             {
                 static_assert(std::is_pod<T>::value, "Template type should be a pod-type");
