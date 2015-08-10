@@ -102,7 +102,9 @@ namespace fareloz
                 typedef const T&   const_reference;
                 typedef size_t     size_type;
                 typedef ptrdiff_t  difference_type;
-                typedef range<value_type>  self_type;
+                typedef range<value_type>               self_type;
+                typedef class range_iterator<self_type> iterator;
+                typedef std::reverse_iterator<iterator> reverse_iterator;
 
                 range(value_type _min, value_type _max, value_type _step = value_type(1))
                     : m_min(_min), m_max(_max), m_step(_step) {
@@ -158,6 +160,26 @@ namespace fareloz
 
                 value_type step() const {
                     return m_step;
+                }
+
+                iterator begin() const {
+                    iterator start_iterator(this, 0);
+                    return start_iterator;
+                }
+
+                iterator end() const {
+                    iterator end_iterator(this, size());
+                    return end_iterator;
+                }
+
+                reverse_iterator rbegin() const {
+                    reverse_iterator start_iterator(this, (size() - 1));
+                    return start_iterator;
+                }
+
+                reverse_iterator rend() const {
+                    reverse_iterator end_iterator(this, size_type(-1));
+                    return end_iterator;
                 }
 
             private:
