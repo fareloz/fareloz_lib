@@ -53,6 +53,17 @@ namespace fareloz
                     return tmp;
                 }
 
+                self_type& operator--() {
+                    m_value -= m_range->step();
+                    return *this;
+                }
+
+                self_type operator--(int) {
+                    self_type tmp(*this);
+                    --(*this);
+                    return tmp;
+                }
+
                 self_type operator+(difference_type n) {
                     self_type tmp(*this);
                     tmp.m_index += n * m_range->step();
