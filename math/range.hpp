@@ -25,8 +25,8 @@ namespace fareloz
                 typedef typename range_type::reference reference;
                 typedef typename range_type::const_reference const_reference;
 
-                range_iterator(const range_type* const range, size_t start_index)
-                    : m_range(range), m_index(start_index)
+                range_iterator(const range_type* const range, value_type start_value)
+                    : m_range(range), m_value(start_value)
                 { }
 
                 range_iterator(const self_type&) = default;
@@ -35,15 +35,15 @@ namespace fareloz
                 ~range_iterator() = default;
 
                 operator value_type() const { 
-                    return (*m_range)[m_index]; 
+                    return (*m_range)[m_value]; 
                 }
 
                 value_type operator*() const {
-                    return (*m_range)[m_index];;
+                    return (*m_range)[m_value];;
                 }
 
                 self_type& operator++() {
-                    ++m_index;
+                    m_value += m_range->step();
                     return *this;
                 }
 
@@ -55,39 +55,39 @@ namespace fareloz
 
                 self_type operator+(difference_type n) {
                     self_type tmp(*this);
-                    tmp.m_index += n;
+                    tmp.m_index += n * m_range->step();
                     return tmp;
                 }
 
                 self_type& operator+=(difference_type n) {
-                    m_index += n;
+                    m_value += n * m_range->step();
                     return (*this);
                 }
 
                 self_type operator-(difference_type n) {
                     self_type tmp(*this);
-                    tmp.m_index -= n;
+                    tmp.m_value -= n * m_range->step();
                     return tmp;
                 }
 
                 self_type& operator-=(difference_type n) {
-                    m_index -= n;
+                    m_value -= n * m_range->step();
                     return (*this);
                 }
 
                 bool operator==(const self_type& other) const {
                     return ((m_range == other.m_range) &&
-                        (m_index == other.m_index));
+                        (m_value == other.m_value));
                 }
 
                 bool operator!=(const self_type& other) const {
                     return !((m_range == other.m_range) &&
-                        (m_index == other.m_index));
+                        (m_value == other.m_value));
                 }
 
             private:
                 const range_type* const m_range;
-                size_type m_index;
+                value_type m_value;
             };
 
             template<typename T>
@@ -164,22 +164,22 @@ namespace fareloz
                 }
 
                 iterator begin() const {
-                    iterator start_iterator(this, 0);
+                    iterator start_iterator(this, m_min);
                     return start_iterator;
                 }
 
                 iterator end() const {
-                    iterator end_iterator(this, size());
+                    iterator end_iterator(this, m_min + size() * m_step);
                     return end_iterator;
                 }
 
                 reverse_iterator rbegin() const {
-                    reverse_iterator start_iterator(this, (size() - 1));
+                    reverse_iterator start_iterator(end());
                     return start_iterator;
                 }
 
                 reverse_iterator rend() const {
-                    reverse_iterator end_iterator(this, size_type(-1));
+                    reverse_iterator end_iterator(begin());
                     return end_iterator;
                 }
 
