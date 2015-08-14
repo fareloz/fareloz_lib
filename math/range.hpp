@@ -2,6 +2,7 @@
 
 #include <stdexcept>
 #include <type_traits>
+#include <iterator>
 
 namespace fareloz 
 {
@@ -10,12 +11,12 @@ namespace fareloz
         namespace collections
         {
             template<typename T>
-            class range_iterator 
+            class range_iterator : std::iterator<std::random_access_iterator_tag, typename T::value_type>
             {
             public:
                 typedef T range_type;
                 typedef range_iterator<range_type> self_type;
-                typedef std::bidirectional_iterator_tag iterator_category;
+                typedef std::random_access_iterator_tag iterator_category;
                 typedef typename range_type::value_type value_type;
                 typedef typename range_type::size_type size_type;
                 typedef typename range_type::difference_type difference_type;
