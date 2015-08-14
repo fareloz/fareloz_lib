@@ -92,7 +92,7 @@ namespace fareloz
             template<typename T>
             class range sealed
             {
-                static_assert(std::is_pod<T>::value, "Template type should be a pod-type");
+                static_assert(std::is_integral<T>::value, "Template type should be a pod-type");
 
             public:
                 typedef T          value_type;
