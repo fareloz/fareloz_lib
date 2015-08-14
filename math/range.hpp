@@ -4,6 +4,8 @@
 #include <type_traits>
 #include <iterator>
 
+#include "number.hpp"
+
 namespace fareloz 
 {
     namespace math
@@ -88,12 +90,11 @@ namespace fareloz
 
                 bool operator==(const self_type& other) const {
                     return ((m_range == other.m_range) &&
-                        (m_value == other.m_value));
+                        (numeric::equals<value_type>(m_value, other.m_value, m_range->step())));
                 }
 
                 bool operator!=(const self_type& other) const {
-                    return !((m_range == other.m_range) &&
-                        (m_value == other.m_value));
+                    return !((*this) == other);
                 }
 
             private:
@@ -159,7 +160,7 @@ namespace fareloz
                     if (empty()) {
                         return 0;
                     }
-                    return return static_cast<size_type>((m_max - m_min) / m_step);
+                    return static_cast<size_type>((m_max - m_min) / m_step);
                 }
 
                 value_type min() const {
