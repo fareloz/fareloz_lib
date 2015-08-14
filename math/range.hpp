@@ -93,7 +93,7 @@ namespace fareloz
             template<typename T>
             class range sealed
             {
-                static_assert(std::is_arithmetic<T>::value, "Template type should be an arthmetic type");
+                static_assert(std::is_arithmetic<T>::value, "Template type should be an arithmetic-type");
 
             public:
                 typedef T          value_type;
@@ -148,7 +148,7 @@ namespace fareloz
                     if (empty()) {
                         return 0;
                     }
-                    return ((m_max - m_min) / m_step + 1);
+                    return return static_cast<size_type>((m_max - m_min) / m_step);
                 }
 
                 value_type min() const {
