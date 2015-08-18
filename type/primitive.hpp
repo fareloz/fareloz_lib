@@ -10,5 +10,7 @@ namespace fareloz
 
         template <typename MeasType>
         struct size { MeasType width; MeasType height; };
+
+        typedef void* mem_ptr;
     }
 }
