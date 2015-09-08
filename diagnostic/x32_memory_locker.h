@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "type\primitive.hpp"
+#include "type/primitive.h"
 
 namespace fareloz
 {
