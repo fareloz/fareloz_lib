@@ -57,7 +57,7 @@ namespace fareloz
                 }
 
                 self_type& operator--() {
-                    --m_index);
+                    --m_index;
                     return *this;
                 }
 
