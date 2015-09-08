@@ -15,14 +15,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="random.hpp">
+    <ClCompile Include="range.hpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="number.hpp">
+    </ClCompile>
+    <ClCompile Include="number.hpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="range.hpp">
+    </ClCompile>
+    <ClCompile Include="random.hpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
 </Project>
