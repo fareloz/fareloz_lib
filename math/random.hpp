@@ -27,9 +27,9 @@ namespace fareloz
             };
 
             template<typename T>
-            struct generator<T, type::traits::IntType>
+            struct generator<T, type::traits::int_type>
             {
-                static T generate_value(T min, T max)
+                static T generate_value(T min = std::numeric_limits<T>::min(), T max = std::numeric_limits<T>::max())
                 {
                     std::uniform_int_distribution<T> d{ min, max };
                     return d(default_engine());
@@ -37,9 +37,9 @@ namespace fareloz
             };
 
             template<typename T>
-            struct generator<T, type::traits::UIntType>
+            struct generator<T, type::traits::uint_type>
             {
-                static T generate_value(T min, T max)
+                static T generate_value(T min = std::numeric_limits<T>::min(), T max = std::numeric_limits<T>::max())
                 {
                     std::uniform_int_distribution<T> d{ min, max };
                     return d(default_engine());
@@ -47,9 +47,9 @@ namespace fareloz
             };
 
             template<typename T>
-            struct generator<T, type::traits::RealType>
+            struct generator<T, type::traits::float_type>
             {
-                static T generate_value(T min, T max)
+                static T generate_value(T min = std::numeric_limits<T>::min(), T max = std::numeric_limits<T>::max())
                 {
                     std::uniform_real_distribution<T> d{ min, max };
                     return d(default_engine());
