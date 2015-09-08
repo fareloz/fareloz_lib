@@ -28,8 +28,13 @@ namespace fareloz
                 return ((_val >= _min) && (_val <= _max));
             }
 
+            template<typename T>
+            inline bool equals(const T& a, const T& b) {
+                return (a == b);
+            }
+
             template<typename T> 
-            inline bool equals(T a, T b, T e) {
+            inline bool equals(const T& a, const T& b, const T& e) {
                 return std::abs(a - b) < std::abs(e);
             }
         }
