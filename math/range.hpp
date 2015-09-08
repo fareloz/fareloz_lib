@@ -5,6 +5,7 @@
 #include <iterator>
 
 #include "number.hpp"
+#include "type/traits.hpp"
 
 namespace fareloz 
 {
@@ -105,7 +106,10 @@ namespace fareloz
             template<typename T>
             class range sealed
             {
-                static_assert(std::is_arithmetic<T>::value, "Template type should be an arithmetic-type");
+                static_assert(
+                    ! std::is_same< typename type::traits::numeric_type<T>::type, 
+                      type::traits::void_type > :: value,
+                    "Template type should be a numeric type");
 
             public:
                 typedef T          value_type;
