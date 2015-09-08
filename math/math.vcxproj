@@ -136,9 +136,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="number.hpp" />
-    <ClInclude Include="random.hpp" />
-    <ClInclude Include="range.hpp" />
+    <ClCompile Include="number.hpp" />
+    <ClCompile Include="random.hpp" />
+    <ClCompile Include="range.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

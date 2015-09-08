@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="object_counter.hpp" />
+    <ClCompile Include="object_counter.hpp" />
     <ClInclude Include="x32_memory_locker.h" />
   </ItemGroup>
   <ItemGroup>

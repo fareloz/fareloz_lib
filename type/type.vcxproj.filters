@@ -20,10 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="primitive.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="data_size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="primitive.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
